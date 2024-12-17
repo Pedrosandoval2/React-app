@@ -1,51 +1,46 @@
 import { BrowserRouter, Navigate, NavLink, Route, Routes } from 'react-router-dom'
 import reactLogo from '../assets/react.svg'
-import { ROUTES } from './routers'
-import { LazyPage1 } from '../01-lazyload/pages/LazyPage1'
-import { LazyPage2 } from '../01-lazyload/pages/LazyPage2'
-import { LazyPage3 } from '../01-lazyload/pages/LazyPage3'
+import { route, ROUTES } from './routers'
+import { Suspense } from 'react'
 
 export const Navigations = () => {
     return (
-        <BrowserRouter>
-            <div className='main-layout'>
-                <nav>
-                    <img src={reactLogo} alt='logo' />
-                    <ul>
-                        <li>
-                            <NavLink
-                                to={ROUTES.home}
-                                className={({ isActive }) => isActive ? 'nav-active' : ''}
-                            >
-                                Lazy 1
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to={ROUTES.about}
-                                className={({ isActive }) => isActive ? 'nav-active' : ''}
-                            >
-                                Lazy 2
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to={ROUTES.users}
-                                className={({ isActive }) => isActive ? 'nav-active' : ''}
-                            >
-                                Lazy 3
-                            </NavLink>
-                        </li>
-                    </ul>
-                </nav>
+        <Suspense fallback={null}>
+            <BrowserRouter>
+                <div className='main-layout'>
+                    <nav>
+                        <img src={reactLogo} alt='logo' />
+                        <ul>
+                            {ROUTES.map(({ to, name }) => (
+                                <li>
+                                    <NavLink
+                                        key={to + name}
+                                        to={to}
+                                        className={({ isActive }) => isActive
+                                            ? 'nav-active'
+                                            : ''
+                                        }
+                                    >
+                                        {name}
+                                    </NavLink>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
 
-                <Routes>
-                    <Route path={ROUTES.home} element={<LazyPage1 />} />
-                    <Route path={ROUTES.about} element={<LazyPage2 />} />
-                    <Route path={ROUTES.users} element={<LazyPage3 />} />
-                    <Route path="/*" element={<Navigate to={ROUTES.home} />} />
-                </Routes>
-            </div>
-        </BrowserRouter>
+                    <Routes>
+                        {ROUTES.map(({ path, Component }) => (
+                            <Route key={path} path={path} element={<Component />} />
+                        ))}
+                        <Route path="/*" element={<Navigate to={route.lazy1} />} />
+                    </Routes>
+                </div>
+            </BrowserRouter>
+        </Suspense>
     )
 }
+
+// Para hacer el suspence primero se tiene que importar con el
+// const Lazy1 = lazy(() => import('../01-lazyload/pages/LazyPage1'))
+// y luego en globar de Suspense en el tiene un fallback que es cuando está cargando.
+// Los componentes para poder ser importados en el lazy, tienen que estar en export default.
