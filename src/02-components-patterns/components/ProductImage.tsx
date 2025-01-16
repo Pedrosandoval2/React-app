@@ -6,9 +6,13 @@ import { useContext } from 'react';
 import { ProductContext } from './ProductCard';
 
 
-export const ProductImage = ({alt = '' }: ProductImageProps) => {
+export const ProductImage = ({ alt = '', className }: ProductImageProps) => {
     const { product } = useContext(ProductContext);
     return (
-        <img className={styles.productImg} src={product.img || noImage} alt={alt} />
+        <img
+            className={`${styles.productImg} ${className}`}
+            src={product.img || noImage}
+            alt={alt}
+        />
     )
 };

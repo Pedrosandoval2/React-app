@@ -14,6 +14,5 @@ export const ProductCard: ProductCardProps = Object.assign(ProductCardHOC, {
     Buttons: ProductButton
 })
 
-export default ProductCard
 
 

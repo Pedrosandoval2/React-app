@@ -1,4 +1,5 @@
 import { ProductImage, ProductButton, ProductTitle, ProductCard } from "../components";
+import '../styles/custom-styles.css'
 
 const product = {
     id: '1',
@@ -19,19 +20,30 @@ export const ShoppingPages = () => {
             }}>
                 <ProductCard product={product}>
                     <ProductCard.Image />
-                    <ProductCard.Title title="Hello wordl"/>
-                    <ProductCard.Buttons/>
+                    <ProductCard.Title title="Hello wordl" />
+                    <ProductCard.Buttons />
                 </ProductCard>
 
-                <ProductCard product={product}>
+                <ProductCard
+                    product={product}
+                    className="bg-dark"
+                >
+                    <ProductImage className="custom-image" />
+                    <ProductTitle className="text-white" title="Hola Mundo" />
+                    <ProductButton className="custom-buttons" />
+                </ProductCard>
+
+                <ProductCard
+                    product={product}
+                    style={{
+                        backgroundColor: '#70d1F8'
+                    }}
+                >
                     <ProductImage />
-                    <ProductTitle title="Hola Mundo" />
-                    <ProductButton/>
+                    <ProductTitle />
+                    <ProductButton />
                 </ProductCard>
             </div>
         </div>
     )
 }
-
-
-// Faltaría crear el contex para heredar a los hijos
