@@ -1,6 +1,6 @@
-import { createContext } from 'react'
+import { createContext, useEffect } from 'react'
 import styles from '../styles/styles.module.css'
-import { Product, ProductContextProps } from '../interfaces/interfaces'
+import { onChangeArgs, Product, ProductContextProps } from '../interfaces/interfaces'
 import { useProduct } from '../hooks/useProduct';
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -12,11 +12,21 @@ export interface Props {
     children?: React.ReactElement | React.ReactElement[];
     className?: string;
     style?: React.CSSProperties;
+    onChange?: (args: onChangeArgs) => void;
+    value?: number;
 }
 
-export const ProductCard = ({ children, product, className, style }: Props) => {
+export const ProductCard = ({ children, product, onChange, className, style, value = 0 }: Props) => {
 
-    const { quantity, increaseBy } = useProduct();
+    const { quantity, increaseBy, setQuantity } = useProduct({
+        onChange: onChange || (() => {}),
+        product
+    });
+
+    useEffect(() => {
+        setQuantity(value)
+    }, [value])
+
 
     return (
         <Provider value={{ quantity, increaseBy, product }}>

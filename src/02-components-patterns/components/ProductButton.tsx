@@ -6,7 +6,7 @@ export interface PropsButton {
     className?: string;
 }
 
-export const ProductButton = ({className}: PropsButton) => {
+export const ProductButton = ({ className }: PropsButton) => {
     const { increaseBy, quantity } = useContext(ProductContext);
     return (
         <div className={`${styles.buttonsContainer} ${className}`}>

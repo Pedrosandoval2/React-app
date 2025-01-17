@@ -1,13 +1,10 @@
 import { ProductImage, ProductButton, ProductTitle, ProductCard } from "../components";
 import '../styles/custom-styles.css'
-
-const product = {
-    id: '1',
-    title: 'Coffee Mug - Card',
-    img: './coffee-mug.png'
-}
+import { useShoppingCart } from "../hooks/useShoippingCart";
 
 export const ShoppingPages = () => {
+
+    const {shoppingCart, products, onProductQuantityChange} = useShoppingCart()
 
     return (
         <div>
@@ -18,31 +15,38 @@ export const ShoppingPages = () => {
                 flexDirection: 'row',
                 flexWrap: 'wrap'
             }}>
-                <ProductCard product={product}>
-                    <ProductCard.Image />
-                    <ProductCard.Title title="Hello wordl" />
-                    <ProductCard.Buttons />
-                </ProductCard>
-
-                <ProductCard
-                    product={product}
-                    className="bg-dark"
-                >
-                    <ProductImage className="custom-image" />
-                    <ProductTitle className="text-white" title="Hola Mundo" />
-                    <ProductButton className="custom-buttons" />
-                </ProductCard>
-
-                <ProductCard
-                    product={product}
-                    style={{
-                        backgroundColor: '#70d1F8'
-                    }}
-                >
-                    <ProductImage />
-                    <ProductTitle />
-                    <ProductButton />
-                </ProductCard>
+                {
+                    products.map(product => (
+                        <ProductCard
+                            product={product}
+                            onChange={onProductQuantityChange}
+                            value={shoppingCart?.[product.id]?.quantity || 0}
+                        // Aquí se hizo que se hace por producto por el id y busca el quantity si no hay va 0
+                        >
+                            <ProductImage />
+                            <ProductTitle />
+                            <ProductButton />
+                        </ProductCard>
+                    ))
+                }
+                <div className="shopping-cart">
+                    {
+                        Object.values(shoppingCart).map(product => (
+                            <ProductCard
+                                product={product}
+                                className="bg-dark text-white"
+                                style={{
+                                    width: '100px'
+                                }}
+                                value={product.quantity}
+                                onChange={onProductQuantityChange}
+                            >
+                                <ProductImage className="custom-image" />
+                                <ProductButton className="custom-buttons" />
+                            </ProductCard>
+                        ))
+                    }
+                </div>
             </div>
         </div>
     )

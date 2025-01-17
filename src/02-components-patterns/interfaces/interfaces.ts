@@ -34,3 +34,8 @@ export interface ProductCardProps {
     Image: ({ alt }: ProductImageProps) => JSX.Element,
     Buttons: ({ className }: PropsButton) => JSX.Element
 }
+
+export interface onChangeArgs {
+    product: Product,
+    quantity: number
+}
