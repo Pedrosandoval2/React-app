@@ -1,6 +1,10 @@
 import { BrowserRouter, Navigate, NavLink, Route, Routes } from 'react-router-dom'
 import reactLogo from '../assets/react.svg'
-import { ROUTES } from './routers'
+import { ROUTES, ROUTES_PUBLICS } from './routers'
+// import { RegisterPage } from '../03-forms/pages/RegisterPage'
+import { FormikPage } from '../03-forms/pages/FormikPage'
+import { RegisterPage } from '../03-forms/pages/RegisterPage'
+import { FormikYupPage } from '../03-forms/pages/FormikYupPage'
 
 export const Navigations = () => {
     return (
@@ -11,35 +15,35 @@ export const Navigations = () => {
                     <ul>
                         <li>
                             <NavLink
-                                to={ROUTES.home}
+                                to={ROUTES_PUBLICS.register}
                                 className={({ isActive }) => isActive ? 'nav-active' : ''}
                             >
-                                Home
+                                Register Native
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to={ROUTES.about}
+                                to={ROUTES_PUBLICS.formik}
                                 className={({ isActive }) => isActive ? 'nav-active' : ''}
                             >
-                                About
+                                Formik
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to={ROUTES.users}
+                                to={ROUTES_PUBLICS.formik_yup}
                                 className={({ isActive }) => isActive ? 'nav-active' : ''}
                             >
-                                Users
+                                Formik Yup
                             </NavLink>
                         </li>
                     </ul>
                 </nav>
 
                 <Routes>
-                    <Route path={ROUTES.home} element={<h1>Home</h1>} />
-                    <Route path={ROUTES.about} element={<h1>About</h1>} />
-                    <Route path={ROUTES.users} element={<h1>Users</h1>} />
+                    <Route path={ROUTES_PUBLICS.register} element={<RegisterPage />} />
+                    <Route path={ROUTES_PUBLICS.formik} element={<FormikPage />} />
+                    <Route path={ROUTES_PUBLICS.formik_yup} element={<FormikYupPage />} />
                     <Route path="/*" element={<Navigate to={ROUTES.home} />} />
                 </Routes>
             </div>
