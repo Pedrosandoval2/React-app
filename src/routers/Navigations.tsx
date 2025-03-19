@@ -1,10 +1,10 @@
 import { BrowserRouter, Navigate, NavLink, Route, Routes } from 'react-router-dom'
-import reactLogo from '../assets/react.svg'
+
 import { ROUTES, ROUTES_PUBLICS } from './routers'
-// import { RegisterPage } from '../03-forms/pages/RegisterPage'
-import { FormikPage } from '../03-forms/pages/FormikPage'
-import { RegisterPage } from '../03-forms/pages/RegisterPage'
-import { FormikYupPage } from '../03-forms/pages/FormikYupPage'
+
+import { FormikAbstractation, FormikComponents, FormikPage, FormikYupPage, RegisterPage } from '../03-forms/pages'
+
+import reactLogo from '../assets/react.svg'
 
 export const Navigations = () => {
     return (
@@ -37,6 +37,22 @@ export const Navigations = () => {
                                 Formik Yup
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to={ROUTES_PUBLICS.formik_components}
+                                className={({ isActive }) => isActive ? 'nav-active' : ''}
+                            >
+                                Formik Components
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to={ROUTES_PUBLICS.formik_abstractation}
+                                className={({ isActive }) => isActive ? 'nav-active' : ''}
+                            >
+                                Formik Abstractation
+                            </NavLink>
+                        </li>
                     </ul>
                 </nav>
 
@@ -44,6 +60,8 @@ export const Navigations = () => {
                     <Route path={ROUTES_PUBLICS.register} element={<RegisterPage />} />
                     <Route path={ROUTES_PUBLICS.formik} element={<FormikPage />} />
                     <Route path={ROUTES_PUBLICS.formik_yup} element={<FormikYupPage />} />
+                    <Route path={ROUTES_PUBLICS.formik_components} element={<FormikComponents />} />
+                    <Route path={ROUTES_PUBLICS.formik_abstractation} element={<FormikAbstractation />} />
                     <Route path="/*" element={<Navigate to={ROUTES.home} />} />
                 </Routes>
             </div>
