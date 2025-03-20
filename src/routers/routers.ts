@@ -10,4 +10,5 @@ export const ROUTES_PUBLICS = {
     formik_yup: '/formik-yup',
     formik_components: '/formik-components',
     formik_abstractation: '/formik-abstractation',
+    dinamic_form: '/dynamic-form',
 }

@@ -24,7 +24,7 @@ export const FormikAbstractation = () => {
                     terms: false,
                     jobType: ''
                 }}
-                onSubmit={(values) => {
+                onSubmit={(values) => {  
                     console.log(values);
                 }}
                 validationSchema={schema}

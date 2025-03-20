@@ -1,0 +1,136 @@
+[
+    {
+        "type": "input",
+        "name": "firstName",
+        "label": "First Name",
+        "placeholder": "Enter your first name",
+        "value": "Pedro",
+        "validation": [
+            {
+                "type": "required"
+            },
+            {
+                "type": "minLength",
+                "value": 3
+            },
+            {
+                "type": "maxLength",
+                "value": 10
+            }
+
+        ]
+    },
+    {
+        "type": "input",
+        "name": "lastName",
+        "label": "Last Name",
+        "placeholder": "Enter your last name",
+        "value": "",
+        "validation": [
+            {
+                "type": "required"
+            },
+            {
+                "type": "minLength",
+                "value": 3
+            },
+            {
+                "type": "maxLength",
+                "value": 10
+            }
+
+        ]
+    },
+    {
+        "type": "input",
+        "name": "email",
+        "label": "Email",
+        "placeholder": "Enter your email",
+        "value": "",
+        "validation": [
+            {
+                "type": "required"
+            },
+            {
+                "type": "minLength",
+                "value": 3
+            },
+            {
+                "type": "maxLength",
+                "value": 10
+            },
+            {
+                "type": "format"
+            }
+
+        ]
+    },
+    {
+        "type": "input",
+        "name": "password",
+        "label": "Password",
+        "placeholder": "Enter your password",
+        "value": "",
+        "validation": [
+            {
+                "type": "required"
+            },
+            {
+                "type": "minLength",
+                "value": 3
+            },
+            {
+                "type": "maxLength",
+                "value": 10
+            },
+            {
+                "type": "symbol"
+            }
+
+        ]
+    },
+    {
+        "type": "input",
+        "name": "confirmPassword",
+        "label": "Confirm Password",
+        "placeholder": "Confirm your password",
+        "value": "",
+        "validation": [
+            {
+                "type": "required"
+            },
+            {
+                "type": "minLength",
+                "value": 3
+            },
+            {
+                "type": "maxLength",
+                "value": 10
+            },
+            {
+                "type": "match"
+            }
+
+        ]
+    },
+    {
+        "type": "select",
+        "name": "country",
+        "label": "Country",
+        "options": [
+            {
+                "value": "us",
+                "name": "United States"
+            },
+            {
+                "value": "mx",
+                "name": "Mexico"
+            },
+            {
+                "value": "ca",
+                "name": "Canada"
+            }
+        ],
+        "value": "mx"
+    }
+]

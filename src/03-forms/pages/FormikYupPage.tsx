@@ -1,6 +1,8 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import '../styles/styles.css'
+import { useContext } from 'react'
+import { formikContext } from '../store'
 
 
 const schema = Yup.object({
@@ -31,7 +33,6 @@ export const FormikYupPage = () => {
         },
         validationSchema: schema
     })
-
     return (
         <div>
             <h1>FormikPage Yup</h1>

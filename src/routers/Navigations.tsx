@@ -5,6 +5,7 @@ import { ROUTES, ROUTES_PUBLICS } from './routers'
 import { FormikAbstractation, FormikComponents, FormikPage, FormikYupPage, RegisterPage } from '../03-forms/pages'
 
 import reactLogo from '../assets/react.svg'
+import { DinamicForm } from '../03-forms/pages/DinamicForm'
 
 export const Navigations = () => {
     return (
@@ -53,6 +54,14 @@ export const Navigations = () => {
                                 Formik Abstractation
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to={ROUTES_PUBLICS.dinamic_form}
+                                className={({ isActive }) => isActive ? 'nav-active' : ''}
+                            >
+                                DynamicForm
+                            </NavLink>
+                        </li>
                     </ul>
                 </nav>
 
@@ -62,6 +71,7 @@ export const Navigations = () => {
                     <Route path={ROUTES_PUBLICS.formik_yup} element={<FormikYupPage />} />
                     <Route path={ROUTES_PUBLICS.formik_components} element={<FormikComponents />} />
                     <Route path={ROUTES_PUBLICS.formik_abstractation} element={<FormikAbstractation />} />
+                    <Route path={ROUTES_PUBLICS.dinamic_form} element={<DinamicForm />} />
                     <Route path="/*" element={<Navigate to={ROUTES.home} />} />
                 </Routes>
             </div>

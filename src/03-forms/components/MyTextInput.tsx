@@ -1,9 +1,10 @@
 import { ErrorMessage, Field, useField } from 'formik'
 
+export type MyTextInputType = 'text' | 'email' | 'password' | 'number' | 'checkbox';
 interface Props {
     label: string;
     name: string;
-    type?: 'text' | 'email' | 'password' | 'number' | 'checkbox';
+    type?: MyTextInputType;
     placeholder?: string;
     // Nos permite poder agregar cualquier propiedad que se le quiera agregar al input
     // como por ejemplo un id, un className, etc.
